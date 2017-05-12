@@ -14,7 +14,8 @@ export default Component.extend({
 
   // == Keyword Properties ====================================================
 
-  attributeBindings: ['style'],
+  attributeBindings: ['transform'],
+  tagName: 'g',
 
   // == PropTypes =============================================================
 
@@ -39,17 +40,18 @@ export default Component.extend({
 
   @readOnly
   @computed('coordinate')
-  style (coordinate) {
+  transform (coordinate) {
     if (isNone(coordinate)) {
       return EmberString.htmlSafe('')
     }
 
     // calc is added to align the middle of the tick with the location
     if (this.get('axis') === 'x') {
-      return EmberString.htmlSafe(`
-        position: absolute;
-        left: calc(${coordinate}px - ${this.$().outerWidth()}px / 2);
-      `)
+      return `translate(${coordinate},0)`
+      // return EmberString.htmlSafe(`
+      //   position: absolute;
+      //   left: calc(${coordinate}px - ${this.$().outerWidth()}px / 2);
+      // `)
     } else {
       return EmberString.htmlSafe(`
         position: absolute;

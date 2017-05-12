@@ -1,5 +1,5 @@
 <div class='demo-row'>
-  {{#frost-chart
+  {{!-- {{#frost-chart
     class='demo-flex'
     hook='demo-power'
     xDomain=xDomain
@@ -22,7 +22,7 @@
         <rect x={{bar.x}} y={{bar.y}} width={{bar.width}} height={{bar.height}} />
       {{/plot.bar}}
     {{/chart.svg}}
-  {{/frost-chart}}
+  {{/frost-chart}} --}}
 
   {{#frost-chart
     class='demo-flex'
@@ -32,8 +32,9 @@
     yScale=(d3-linear-scale)
     as |chart|
   }}
-    {{#chart.x-axis label='Line' as |tick|}}
-      {{to-fixed tick 0}}
+    {{#chart.x-axis alignment='top' label='Line' as |tick|}}
+        <text x=-5 y=0 alignment-baseline='hanging' text-anchor='end'>Foo {{to-fixed tick 0}}</text>
+        <line x1=0 y1=0 x2=0 y2=20 stroke-width=1 stroke='#cdcdcd' />
     {{/chart.x-axis}}
 
     {{#chart.y-axis as |tick|}}
@@ -48,7 +49,7 @@
   {{/frost-chart}}
 </div>
 
-<div class='demo-row'>
+{{!-- <div class='demo-row'>
   {{#frost-chart
     class='demo-flex'
     hook='demo-power'
@@ -123,4 +124,4 @@
       }}
     {{/chart.svg}}
   {{/frost-chart}}
-</div>
+</div> --}}

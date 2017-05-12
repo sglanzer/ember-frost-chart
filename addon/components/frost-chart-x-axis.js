@@ -20,6 +20,7 @@ export default Component.extend({
   attributeBindings: ['style'],
   classNameBindings: ['alignment'],
   layout,
+  tagName: 'svg',
 
   // == PropTypes =============================================================
 
@@ -92,6 +93,7 @@ export default Component.extend({
     const xAxisLastTickMargin = this.get('chartState.axes.x.lastTickMargin')
 
     return EmberString.htmlSafe(`
+      height: 10px;
       ${xAxisAlignment}: ${get(chartPadding, xAxisAlignment)}px;
       width: calc(${chartWidth}px - ${yAxisWidth}px - ${xAxisFirstTickMargin}px - ${xAxisLastTickMargin}px);
       margin-left: calc(${yAxisAlignment === 'left' ? yAxisWidth : xAxisFirstTickMargin}px);
@@ -112,7 +114,8 @@ export default Component.extend({
       type: 'RENDERED_X_AXIS',
       axis: {
         alignment: this.get('alignment'),
-        height: this.$().outerHeight(true),
+        // height: this.$().outerHeight(true),
+        height: 10,
         ticks: this.get('_ticks'),
         tickHeight: this.$(`.${this.get('css')}-ticks`).height()
       }
